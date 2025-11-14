@@ -29,12 +29,14 @@ body {
     border-radius: 10px;
 }
 
+
 .buttons {
+    width: 320px;
     display: flex;
-    justify-content: baseline;
     flex-wrap: wrap;
     gap: 10px;
-
+    justify-content: flex-start;
+    margin: 0 auto;
 }
 
 .btn {
