@@ -9,15 +9,20 @@ let result = 0;
 
 btn.forEach(n => {
     n.addEventListener("click", () => {
-        let arr = ["*", "/", "+", "-", "="];
-        if (did == "" && !arr.includes(n.textContent)) {
+        let arr = ["*", "/", "+", "-", "=", "C"];
+        if (n.textContent == "C") {
+            num_1 = "";
+            num_2 = "";
+            did = "";
+            display.textContent = 0;
+        } else if (did == "" && !arr.includes(n.textContent)) {
             num_1 = num_1 + n.textContent;
             console.log("num_1:" + num_1);
             display.textContent = num_1;
         } else if (did == "" && arr.includes(n.textContent)) {
             did = did + n.textContent;
             console.log("did:" + did);
-            display.textContent = did;
+            // display.textContent = did;
         }
         else if (!did == "" && !arr.includes(n.textContent)) {
             num_2 = num_2 + n.textContent;
@@ -46,8 +51,10 @@ btn.forEach(n => {
                 default:
                     break;
             }
+            num_1 = result;
+            num_2 = "";
+            did = "";
         }
 
     })
 })
-// console.log(num_2);
