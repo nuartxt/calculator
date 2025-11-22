@@ -10,16 +10,28 @@ let result = 0;
 btn.forEach(n => {
     n.addEventListener("click", () => {
         let actions = ["*", "/", "+", "-"];
-        if (specialSings(n)) {
+        if (specialBtn(n)) {
             return;
         } else {
-            catchingSings(n, actions);
+            catchingBtn(n, actions);
         }
     })
 })
 
-function specialSings(btn) {
-    if (btn.textContent == "C") {
+function specialBtn(btn) {
+    if (btn.textContent == "DEL") {
+        let new_num = "";
+        if (display.textContent == num_1) {
+            new_num = num_1.slice(0, -1);
+            num_1 = new_num;
+            display.textContent = num_1;
+        } else if (display.textContent == num_2) {
+            new_num = num_2.slice(0, -1);
+            num_2 = new_num;
+            display.textContent = num_2;
+        }
+        // display.textContent.slice(0, -1);
+    } else if (btn.textContent == "C") {
         num_1 = "";
         num_2 = "";
         did = "";
@@ -31,24 +43,25 @@ function specialSings(btn) {
         num_2 = "";
         did = "";
         return true;
-    } else {
+    }
+    else {
         return false;
     }
 }
 
 
 /**/
-function catchingSings(btn, array) {
-    if (did == "" && !array.includes(btn.textContent)) {
+function catchingBtn(btn, array) {
+    if (did == "" && !array.includes(btn.textContent) && btn.textContent !== "DEL") {
         num_1 = num_1 + btn.textContent;
         console.log("num_1:" + num_1);
         display.textContent = num_1;
-    } else if (did == "" && array.includes(btn.textContent)) {
+    } else if (did == "" && array.includes(btn.textContent) && btn.textContent !== "DEL") {
         did = did + btn.textContent;
         console.log("did:" + did);
         // display.textContent = did;
     }
-    else if (did !== "" && !array.includes(btn.textContent)) {
+    else if (did !== "" && !array.includes(btn.textContent) && btn.textContent !== "DEL") {
         num_2 = num_2 + btn.textContent;
         console.log("num_2:" + num_2);
         display.textContent = num_2;
