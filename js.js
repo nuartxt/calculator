@@ -1,5 +1,6 @@
 let btn = document.querySelectorAll(".btn");
 let display = document.querySelector(".display_inpute");
+let entered_num = document.querySelector(".entered_num");
 
 let num_1 = "";
 let did = "";
@@ -15,6 +16,7 @@ btn.forEach(n => {
         } else {
             catchingBtn(n, actions);
         }
+        // entered_num.textContent = result;
     })
 })
 
@@ -30,7 +32,11 @@ function specialBtn(btn) {
             num_2 = new_num;
             display.textContent = num_2;
         }
-        // display.textContent.slice(0, -1);
+        // else if (display.textContent == result) {
+        //     new_num = result.slice(0, -1);
+        //     result = new_num;
+        //     display.textContent = result;
+        // }
     } else if (btn.textContent == "C") {
         num_1 = "";
         num_2 = "";
