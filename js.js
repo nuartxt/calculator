@@ -20,17 +20,19 @@ btn.forEach(n => {
     })
 })
 
+
+/**/
 function specialBtn(btn) {
     if (btn.textContent == "DEL") {
         let new_num = "";
         if (display.textContent == num_1) {
             new_num = num_1.slice(0, -1);
             num_1 = new_num;
-            display.textContent = num_1;
+            (num_1.length > 0) ? display.textContent = num_1 : display.textContent = 0;
         } else if (display.textContent == num_2) {
             new_num = num_2.slice(0, -1);
             num_2 = new_num;
-            display.textContent = num_2;
+            (num_2.length > 0) ? display.textContent = num_2 : display.textContent = 0;
         }
         // else if (display.textContent == result) {
         //     new_num = result.slice(0, -1);
