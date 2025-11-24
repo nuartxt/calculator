@@ -87,7 +87,10 @@ function catchingBtn(btn, array) {
         entered_num.style.display = "block";
         entered_num.textContent = enteredNum();
     }
+
 }
+
+
 
 /**/
 function calculation(did_action) {
@@ -133,8 +136,3 @@ function enteredNum() {
     return entered_display;
 }
 
-
-
-// function second_btn() {
-//     if ()
-// }
