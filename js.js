@@ -16,7 +16,7 @@ btn.forEach(n => {
         } else {
             catchingBtn(n, actions);
         }
-        // entered_num.textContent = result;
+        // entered_num.textContent = enteredNum();
     })
 })
 
@@ -33,20 +33,21 @@ function specialBtn(btn) {
             new_num = num_2.slice(0, -1);
             num_2 = new_num;
             (num_2.length > 0) ? display.textContent = num_2 : display.textContent = 0;
+            entered_num.style.display = "block";
+            entered_num.textContent = enteredNum();
         }
-        // else if (display.textContent == result) {
-        //     new_num = result.slice(0, -1);
-        //     result = new_num;
-        //     display.textContent = result;
-        // }
     } else if (btn.textContent == "C") {
+        entered_num.textContent = "";
+        entered_num.style.display = "none";
         num_1 = "";
         num_2 = "";
         did = "";
+
         display.textContent = 0;
         return true;
     } else if (btn.textContent == "=") {
         calculation(did);
+        // if(btn.textContent )
         num_1 = result;
         num_2 = "";
         did = "";
@@ -67,12 +68,24 @@ function catchingBtn(btn, array) {
     } else if (did == "" && array.includes(btn.textContent) && btn.textContent !== "DEL") {
         did = did + btn.textContent;
         console.log("did:" + did);
-        // display.textContent = did;
+        entered_num.style.display = "block";
+        entered_num.textContent = enteredNum();
     }
     else if (did !== "" && !array.includes(btn.textContent) && btn.textContent !== "DEL") {
         num_2 = num_2 + btn.textContent;
         console.log("num_2:" + num_2);
         display.textContent = num_2;
+        entered_num.style.display = "block";
+        entered_num.textContent = enteredNum() + " =";
+    } else if (did !== "" && array.includes(btn.textContent) && btn.textContent !== "DEL") {
+        calculation(did);
+        num_1 = result;
+        num_2 = "";
+        did = btn.textContent;
+        display.textContent = result;
+
+        entered_num.style.display = "block";
+        entered_num.textContent = enteredNum();
     }
 }
 
@@ -107,3 +120,21 @@ function calculation(did_action) {
             break;
     }
 };
+
+function enteredNum() {
+    let entered_display = "";
+    if (num_1 !== "") {
+        entered_display += num_1;
+    } if (did !== "") {
+        entered_display += did;
+    } if (num_2 !== "") {
+        entered_display += num_2;
+    }
+    return entered_display;
+}
+
+
+
+// function second_btn() {
+//     if ()
+// }
